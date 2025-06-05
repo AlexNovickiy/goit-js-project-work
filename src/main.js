@@ -1,3 +1,5 @@
-import "./js/menu"
-import "./js/modal"
-import "./js/modal2"
+import "./js/refs"
+import "./js/render-functions"
+import "./js/handlers"
+import "./js/artists-api"
+import "./js/helpers"

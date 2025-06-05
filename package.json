@@ -1,11 +1,11 @@
 {
-  "name": "goit-js-project-work",
+  "name": "goit-js-project-work-team-1",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/goit-js-project-work/",
+    "build": "vite build --base=/goit-js-project-work-team-1/",
     "preview": "vite preview"
   },
   "devDependencies": {

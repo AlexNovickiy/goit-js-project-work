@@ -1,12 +1,12 @@
 body {
   font-family: "Inter Tight", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
-  color: #fbfbfb;
-  background-color: #576f35;
+  color: #FFFFFF;
+  background-color: #2E2E2E;
 }
 
 .visually-hidden {
