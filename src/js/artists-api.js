@@ -102,10 +102,13 @@ export async function getArtistById(artistId) {
   }
 }
 
-export async function getFeedbacks() {
+export async function getFeedbacks(page = 1) {
   try {
     const response = await axios.get(
-      `${API_BASE_URL}${API_FEEDBACKS_ENDPOINT}`
+      `${API_BASE_URL}${API_FEEDBACKS_ENDPOINT}`,
+      {
+        params: { page },
+      }
     );
     izitoast.success({
       title: 'Success',
