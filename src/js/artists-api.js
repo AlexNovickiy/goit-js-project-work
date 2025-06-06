@@ -1,15 +1,32 @@
 import axios from 'axios';
 import izitoast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+
+const limit = 8; // default limit for pagination
+
 const API_BASE_URL = 'https://sound-wave.b.goit.study/api';
 const API_ARTISTS_ENDPOINT = `/artists`;
 const API_GENRES_ENDPOINT = `/genres`;
 const API_ARTISTS_ALBUMS_ENDPOINT = `/albums`;
 const API_FEEDBACKS_ENDPOINT = `/feedbacks`;
 
-export async function getArtists() {
+export async function getArtists(
+  page = 1,
+  name = '',
+  sortname = '',
+  genre = ''
+) {
+  const params = {
+    limit,
+    page,
+    ...(name && { name }),
+    ...(sortname && { sortname }),
+    ...(genre && { genre }),
+  };
   try {
-    const response = await axios.get(`${API_BASE_URL}${API_ARTISTS_ENDPOINT}`);
+    const response = await axios.get(`${API_BASE_URL}${API_ARTISTS_ENDPOINT}`, {
+      params,
+    });
     izitoast.success({
       title: 'Success',
       message: 'Artists fetched successfully!',
@@ -24,6 +41,8 @@ export async function getArtists() {
     });
   }
 }
+
+getArtists();
 
 export async function getGenres() {
   try {
@@ -58,6 +77,26 @@ export async function getAlbumsByArtist(artistId) {
     izitoast.error({
       title: 'Error',
       message: 'Failed to fetch albums.',
+      position: 'topRight',
+    });
+  }
+}
+
+export async function getArtistById(artistId) {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}${API_ARTISTS_ENDPOINT}/${artistId}`
+    );
+    izitoast.success({
+      title: 'Success',
+      message: 'Artist fetched successfully!',
+      position: 'topRight',
+    });
+    return response.data;
+  } catch (error) {
+    izitoast.error({
+      title: 'Error',
+      message: 'Failed to fetch artist.',
       position: 'topRight',
     });
   }
