@@ -42,8 +42,6 @@ export async function getArtists(
   }
 }
 
-getArtists();
-
 export async function getGenres() {
   try {
     const response = await axios.get(`${API_BASE_URL}${API_GENRES_ENDPOINT}`);
