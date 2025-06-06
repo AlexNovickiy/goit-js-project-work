@@ -13,14 +13,14 @@ const API_FEEDBACKS_ENDPOINT = `/feedbacks`;
 export async function getArtists(
   page = 1,
   name = '',
-  sortname = '',
+  sortName = '',
   genre = ''
 ) {
   const params = {
     limit,
     page,
     ...(name && { name }),
-    ...(sortname && { sortname }),
+    ...(sortName && { sortName }),
     ...(genre && { genre }),
   };
   try {
