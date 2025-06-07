@@ -80,6 +80,8 @@ export async function getAlbumsByArtist(artistId) {
   }
 }
 
+getAlbumsByArtist('65ada69eaf9f6d155db48612');
+
 export async function getArtistById(artistId) {
   try {
     const response = await axios.get(
@@ -99,6 +101,8 @@ export async function getArtistById(artistId) {
     });
   }
 }
+
+getArtistById('65ada69eaf9f6d155db48612');
 
 export async function getFeedbacks(page = 1) {
   try {
