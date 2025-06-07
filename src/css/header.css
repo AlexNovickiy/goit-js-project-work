@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-main {
+body {
     padding-top: 64px; /* Adjust to match header height */
 }
 
