@@ -99,13 +99,18 @@
 
 .artist-card-link {
   border-radius: 12px;
-  width: 125px;
-  height: 27px;
+
+  border: none;
+  background-color: transparent;
+  display: flex;
+  gap: 8px;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.5;
   color: #fff;
+  align-items: center;
 }
+
 .arrow-icon {
   width: 24px;
   height: 24px;
@@ -131,7 +136,11 @@
   margin: 0 auto;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
+.icon-lernmore,
 .icon-loadmore {
   fill: #fff;
   display: block;
