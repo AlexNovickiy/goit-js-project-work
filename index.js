@@ -6,7 +6,7 @@ import{a as p}from"./assets/vendor-zu6XShmD.js";(function(){const t=document.cre
             <h3 class="artist-card-name">${s.strArtist}</h3>
             <p class="artist-card-description">${a}</p>
             <button id="learn-more-btn" class="artist-card-link" data-artist-id="${s._id}">Learn More <svg class="icon-lernmore" width="24" height="24">
-      <use href="./img/sprite.svg#icon-caret-arrow-artist-right"></use>
+      <use href="../img/sprite.svg#icon-caret-arrow-artist-right"></use>
     </svg></button>
           </div>
         </li>
