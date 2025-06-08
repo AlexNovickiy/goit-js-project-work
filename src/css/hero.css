@@ -2,6 +2,7 @@
   background-color: #23132b;
   position: relative;
   overflow: hidden;
+  padding-top: 64px;
 }
 
 .hero-section::before {
@@ -27,11 +28,8 @@
 .hero-container {
   color: #fff;
   display: flex;
-  max-width: 1440px;
-  margin: 0 auto;
+  width: 100%;
   flex-direction: column;
-  padding-top: 64px;
-  padding-bottom: 64px;
 }
 
 .hero-title {
@@ -52,12 +50,15 @@
   max-width: 280px;
 }
 
+.hero-content {
+  margin-bottom: 64px;
+}
+
 .hero-button {
   display: flex;
   border-radius: 12px;
-  padding: 10px 44px 0px;
+  padding: 10px 61px;
   width: 280px;
-  height: 47px;
   box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
     inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
     inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
@@ -68,6 +69,8 @@
   font-size: 18px;
   line-height: 1.5;
   color: #fff;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-button:hover {
@@ -75,13 +78,19 @@
 }
 
 .icon-btn-hero {
+  display: flex;
   margin-left: 12px;
   fill: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-button-text {
+  width: 100%;
 }
 
 .hero-image {
   height: 385px;
-  margin: 0 auto;
   background-image: url(/img/hero-images/hero-image-mobile@1x.webp);
   background-repeat: no-repeat;
   background-size: contain;
@@ -101,8 +110,7 @@
 
 @media screen and (min-width: 768px) {
   .hero-container {
-    padding-top: 32px;
-    padding-bottom: 32px;
+    
   }
 
   .hero-title {
@@ -141,12 +149,9 @@
   }
 
   .hero-container {
-    margin: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    padding-top: 216px;
-    padding-bottom: 216px;
+    flex-direction: row;
+    gap: 31px;
   }
 
   .hero-title {
@@ -172,5 +177,11 @@
     .hero-image {
       background-image: url(/img/hero-images/hero-image-desktop@2x.webp);
     }
+  }
+
+  .hero-content {
+    margin-bottom: 0;
+    padding-top: 216px;
+    padding-bottom: 216px;
   }
 }
