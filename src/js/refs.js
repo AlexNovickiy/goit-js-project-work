@@ -5,4 +5,6 @@ export const refs = {
   menuAnchorAbout: document.querySelector('#menu-anchor-about'),
   menuAnchorArtists: document.querySelector('#menu-anchor-artists'),
   menuAnchorReviews: document.querySelector('#menu-anchor-reviews'),
+  artistsGrid: document.getElementById('artists-card-id'),
+  loadMoreBtn: document.getElementById('load-more-btn'),
 };
