@@ -1,12 +1,13 @@
 import { fetchArtists } from './artists-api';
 import { renderArtistCards } from './render-functions';
+import { refs } from './refs';
 
 let currentPage = 1;
 const perPage = 8;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const artistsGrid = document.getElementById('artists-card-id');
-  const loadMoreBtn = document.getElementById('load-more-btn');
+  const artistsGrid = refs.artistsGrid;
+  const loadMoreBtn = refs.loadMoreBtn;
 
   async function loadMoreArtists() {
     loadMoreBtn.disabled = true;
@@ -23,13 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
       currentPage++;
       if (artists.length < perPage) {
         loadMoreBtn.style.display = 'none';
+      } else {
+        loadMoreBtn.style.display = 'flex';
       }
     } else {
       loadMoreBtn.style.display = 'none';
     }
 
     loadMoreBtn.disabled = false;
-    // loadMoreBtn.textContent = 'Load More';
   }
 
   loadMoreBtn.addEventListener('click', loadMoreArtists);
