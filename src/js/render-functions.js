@@ -18,7 +18,7 @@ export function renderArtistCards(artists, container) {
             <ul class="artist-card-genres">${genres}</ul>
             <h3 class="artist-card-name">${artist.strArtist}</h3>
             <p class="artist-card-description">${bio}</p>
-            <button id="learn-more-btn" class="artist-card-link">Learn More <svg class="icon-lernmore" width="24" height="24">
+            <button id="learn-more-btn" class="artist-card-link" data-artist-id="${artist._id}">Learn More <svg class="icon-lernmore" width="24" height="24">
       <use href="./img/sprite.svg#icon-caret-arrow-artist-right"></use>
     </svg></button>
           </div>
