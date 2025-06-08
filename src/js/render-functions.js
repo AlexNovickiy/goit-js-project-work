@@ -1,3 +1,7 @@
+const iconHref = `${
+  import.meta.env.BASE_URL
+}img/sprite.svg#icon-caret-arrow-artist-right`;
+
 export function renderArtistCards(artists, container) {
   const markup = artists
     .map(artist => {
@@ -19,7 +23,7 @@ export function renderArtistCards(artists, container) {
             <h3 class="artist-card-name">${artist.strArtist}</h3>
             <p class="artist-card-description">${bio}</p>
             <button id="learn-more-btn" class="artist-card-link" data-artist-id="${artist._id}">Learn More <svg class="icon-lernmore" width="24" height="24">
-      <use xlink:href="./img/sprite.svg#icon-caret-arrow-artist-right"></use>
+      <use xlink:href="${iconHref}"></use>
     </svg></button>
           </div>
         </li>
