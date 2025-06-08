@@ -1,12 +1,12 @@
 body {
-  font-family: "Inter Tight", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 18px;
   font-weight: 400;
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
-  color: #FFFFFF;
-  background-color: #2E2E2E;
+  color: #ffffff;
+  background-color: #2e2e2e;
 }
 
 .visually-hidden {

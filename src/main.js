@@ -4,3 +4,7 @@ import './js/handlers';
 import './js/artists-api';
 import './js/helpers';
 import './js/mobile-menu';
+import './js/feedback';
+import './js/feedback-modal';
+import './js/artitsts-section';
+import './js/artist-modal';
