@@ -134,7 +134,6 @@ export async function postFeedback(feedback) {
       message: 'Feedback submitted successfully!',
       position: 'topRight',
     });
-    return response.data;
   } catch (error) {
     izitoast.error({
       title: 'Error',
