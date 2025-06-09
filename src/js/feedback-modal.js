@@ -51,11 +51,16 @@ function updateStars(rating) {
 /////////////////////////////  Закриття та відкриття  ////////////////////////////////
 function openModal() {
   modalOverlay.classList.add('is-open');
+  document.querySelector('body').style.overflow = 'hidden !important';
+  document.querySelector('html').style.overflow = 'hidden !important';
+  document.querySelector('body').style.height = '100vh';
+  document.querySelector('html').style.height = '100vh';
 }
 feedbackBtn.addEventListener('click', openModal);
 
 function closeModal() {
   modalOverlay.classList.remove('is-open');
+  document.body.style.overflow = 'auto';
 }
 
 closeBtn.addEventListener('click', closeModal);
