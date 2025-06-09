@@ -1,26 +1,18 @@
 import { getAlbumsByArtist } from './artists-api';
 import { showLoader, hideLoader } from './helpers';
-
-const modalOverlay = document.querySelector('.modal-overlay');
-const modal = document.querySelector('.modal');
-const body = document.querySelector('body');
-const closeModalBtn = document.querySelector('.close-btn');
-
-const titlePhoto = document.querySelector('.ph-artist');
-const titleName = document.querySelector('.modal-info-title');
-const aboutArtist = document.querySelector('.modal-info-card');
-const modalAlboms = document.querySelector('.modal-alboms');
-
-const artistsSection = document.querySelector('#artists-card-id');
+import { refs } from './refs';
 
 function onModalOverlayClick(event) {
-  if (event.target === modalOverlay) {
+  if (event.target === refs.modalOverlay) {
     closeModal();
   }
 }
 
 function onDocumentKeydown(event) {
-  if (modalOverlay.classList.contains('is-open') && event.key === 'Escape') {
+  if (
+    refs.modalOverlay.classList.contains('is-open') &&
+    event.key === 'Escape'
+  ) {
     closeModal();
   }
 }
@@ -52,6 +44,7 @@ function formatDuration(milliseconds) {
     }
     milliseconds = numMilliseconds;
   }
+  milliseconds = numMilliseconds;
 
   if (
     milliseconds === null ||
@@ -71,40 +64,36 @@ function formatDuration(milliseconds) {
 
 async function openArtistModal(artistId) {
   showLoader();
-  const existingDescription = aboutArtist.querySelector(
+  const existingDescription = refs.aboutArtist.querySelector(
     '.modal-info-description'
   );
   if (existingDescription) {
     existingDescription.remove();
   }
-  modalAlboms.innerHTML = '';
+  refs.modalAlboms.innerHTML = '';
+  const response = await getAlbumsByArtist(artistId);
+  const {
+    strArtist,
+    strArtistThumb,
+    strGender,
+    intMembers,
+    strCountry,
+    strBiographyEN,
+    intFormedYear,
+    intDisbandedYear,
+    albumsList,
+  } = response;
 
-  try {
-    const response = await getAlbumsByArtist(artistId);
-    const {
-      strArtist,
-      strArtistThumb,
-      strGender,
-      intMembers,
-      strCountry,
-      strBiographyEN,
-      intFormedYear,
-      intDisbandedYear,
-      albumsList,
-    } = response;
+  refs.titleName.textContent = strArtist || 'N/A';
+  refs.titlePhoto.src = strArtistThumb || '';
+  refs.titlePhoto.alt = strArtist || 'Artist photo';
 
-    titleName.textContent = strArtist || 'N/A';
-    titlePhoto.src = strArtistThumb || '';
-    titlePhoto.alt = strArtist || 'Artist photo';
+  const yearsActiveDisplay = formatYearsActive(intFormedYear, intDisbandedYear);
 
-    const yearsActiveDisplay = formatYearsActive(
-      intFormedYear,
-      intDisbandedYear
-    );
-
-    const infoMarkup = `<div class="modal-info-description">
+  const infoMarkup = `<div class="modal-info-description">
             <div class="modal-info-list">
                 <div class="wrap-info-item">
+                <div class="wrapp">
                     <div class="modal-info-item">
                         <span class="detail-label">Years active</span>
                         <span class="detail-value">${yearsActiveDisplay}</span>
@@ -112,10 +101,9 @@ async function openArtistModal(artistId) {
                     <div class="modal-info-item">
                       <span class="detail-label">Sex</span>
                        <span class="detail-value">${strGender || 'N/A'}</span>
-                       
                     </div>
-                </div>
-                <div class="wrap-info-item">
+                    </div>
+                    <div class="wrapp">
                     <div class="modal-info-item">
                         <span class="detail-label">Members</span>
                         <span class="detail-value">${intMembers || 'N/A'}</span>
@@ -123,6 +111,7 @@ async function openArtistModal(artistId) {
                     <div class="modal-info-item">
                         <span class="detail-label">Country</span>
                         <span class="detail-value">${strCountry || 'N/A'}</span>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -133,30 +122,31 @@ async function openArtistModal(artistId) {
                 </p>
             </div>
         </div>`;
-    aboutArtist.insertAdjacentHTML('beforeend', infoMarkup);
 
-    let allAlbumsMarkup = '';
-    if (albumsList && albumsList.length > 0) {
-      albumsList.forEach(album => {
-        const albumName = album.strAlbum || 'Unknown Album';
-        const albumTracks = album.tracks;
-        let tracksMarkup = '';
+  refs.aboutArtist.insertAdjacentHTML('beforeend', infoMarkup);
 
-        if (albumTracks && albumTracks.length > 0) {
-          albumTracks.forEach((track, index) => {
-            const itemClass =
-              (index + 1) % 2 === 0 ? 'albom-track even' : 'albom-track odd';
-            const youtubeLink = track.movie;
-            const movieLinkHtml =
-              typeof youtubeLink === 'string' && youtubeLink.trim() !== ''
-                ? `<a class="link-icon-youtube" href="${youtubeLink}" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
+  let allAlbumsMarkup = '';
+  if (albumsList && albumsList.length > 0) {
+    albumsList.forEach(album => {
+      const albumName = album.strAlbum || 'Unknown Album';
+      const albumTracks = album.tracks;
+      let tracksMarkup = '';
+
+      if (albumTracks && albumTracks.length > 0) {
+        albumTracks.forEach((track, index) => {
+          const itemClass =
+            (index + 1) % 2 === 0 ? 'albom-track even' : 'albom-track odd';
+          const youtubeLink = track.movie;
+          const movieLinkHtml =
+            typeof youtubeLink === 'string' && youtubeLink.trim() !== ''
+              ? `<a class="link-icon-youtube" href="${youtubeLink}" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
                                 <svg class="icon-you-tube">
                                     <use href="/img/sprite.svg#icon-you-tube"></use>
                                 </svg>
                             </a>`
-                : `<span class="youtube-link-placeholder"></span>`;
+              : `<span class="youtube-link-placeholder"></span>`;
 
-            tracksMarkup += `
+          tracksMarkup += `
                             <li class="${itemClass}">
                                 <span>${
                                   track.strTrack || 'No track name'
@@ -167,12 +157,12 @@ async function openArtistModal(artistId) {
                                 ${movieLinkHtml}
                             </li>
                         `;
-          });
-        } else {
-          tracksMarkup = `<li class="albom-track no-tracks">No tracks available for this album.</li>`;
-        }
+        });
+      } else {
+        tracksMarkup = `<li class="albom-track no-tracks">No tracks available for this album.</li>`;
+      }
 
-        allAlbumsMarkup += `
+      allAlbumsMarkup += `
                     <ul class="modal-alboms-list-item">
                         <li class="albom-list-title">
                             <span class="albom-title">${albumName}</span>
@@ -185,41 +175,31 @@ async function openArtistModal(artistId) {
                         ${tracksMarkup}
                     </ul>
                 `;
-      });
-    } else {
-      allAlbumsMarkup = `<p class="no-albums-message">No albums found for this artist.</p>`;
-    }
-    modalAlboms.insertAdjacentHTML('beforeend', allAlbumsMarkup);
-
-    modalOverlay.classList.add('is-open');
-    body.classList.add('no-scroll');
-
-    closeModalBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', onModalOverlayClick);
-    document.addEventListener('keydown', onDocumentKeydown);
-  } catch (error) {
-    console.error('Ошибка при загрузке или отображении данных артиста:', error);
-    titleName.textContent = 'Ошибка загрузки';
-    titlePhoto.src = '';
-    titlePhoto.alt = '';
-    aboutArtist.innerHTML =
-      '<p>Не удалось загрузить информацию об артисте. Попробуйте позже.</p>';
-    modalAlboms.innerHTML = '';
-  } finally {
-    hideLoader();
+    });
+  } else {
+    allAlbumsMarkup = `<p class="no-albums-message">No albums found for this artist.</p>`;
   }
+  refs.modalAlboms.insertAdjacentHTML('beforeend', allAlbumsMarkup);
+
+  refs.modalOverlay.classList.add('is-open');
+  refs.body.classList.add('no-scroll');
+
+  refs.closeModalBtn.addEventListener('click', closeModal);
+  refs.modalOverlay.addEventListener('click', onModalOverlayClick);
+  document.addEventListener('keydown', onDocumentKeydown);
+  hideLoader();
 }
 
 function closeModal() {
-  modalOverlay.classList.remove('is-open');
-  body.classList.remove('no-scroll');
-  closeModalBtn.removeEventListener('click', closeModal);
-  modalOverlay.removeEventListener('click', onModalOverlayClick);
+  refs.modalOverlay.classList.remove('is-open');
+  refs.body.classList.remove('no-scroll');
+  refs.closeModalBtn.removeEventListener('click', closeModal);
+  refs.modalOverlay.removeEventListener('click', onModalOverlayClick);
   document.removeEventListener('keydown', onDocumentKeydown);
 }
 
-if (artistsSection) {
-  artistsSection.addEventListener('click', event => {
+if (refs.artistsSection) {
+  refs.artistsSection.addEventListener('click', event => {
     const learnMoreButton = event.target.closest('.artist-card-link');
 
     if (learnMoreButton) {
