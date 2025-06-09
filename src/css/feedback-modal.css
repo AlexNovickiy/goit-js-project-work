@@ -120,7 +120,6 @@ body.no-scroll {
     border-radius: 10px;
     cursor: pointer;
     margin-bottom: 48px;
-    font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;    
@@ -177,7 +176,7 @@ body.no-scroll {
     }
  }
 
- @media screen and (min-width: 1280px){
+ @media screen and (min-width: 1440px){
     .feedback-mod {
         border-radius: 16px;
         padding: 64px;
