@@ -7,4 +7,5 @@ export const refs = {
   menuAnchorReviews: document.querySelector('#menu-anchor-reviews'),
   artistsGrid: document.getElementById('artists-card-id'),
   loadMoreBtn: document.getElementById('load-more-btn'),
+  loader: document.querySelector('.modal-loader'),
 };
