@@ -1,18 +1,19 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import axios from 'axios';
 
-const loaderOverlay = document.querySelector('.loader-in');
-const modalForm = document.querySelector('.feedback-mod');
-const starRating = document.querySelector('.star-rating');
-const stars = starRating.querySelectorAll('path');
-const nameInput = modalForm.elements['name'];
-const messageInput = modalForm.elements['message'];
-const modalOverlay = document.querySelector('.modal-overlay');
-const closeBtn = document.querySelector('.close-btn-mod');
-const submitBtn = modalForm.querySelector('button[type="submit"]');
+import { refs } from './refs.js';
+import { postFeedback } from './artists-api.js';
 
-const baseURL = 'https://sound-wave.b.goit.study/api/feedbacks';
+const {
+  loaderOverlay,
+  modalForm,
+  stars,
+  nameInput,
+  messageInput,
+  modalOverlay,
+  closeBtn,
+  feedbackBtn,
+} = refs;
 
 function showLoader() {
   loaderOverlay.classList.remove('hidden');
@@ -47,7 +48,11 @@ function updateStars(rating) {
     }
   });
 }
-/////////////////////////////  Закриття  ////////////////////////////////
+/////////////////////////////  Закриття та відкриття  ////////////////////////////////
+function openModal() {
+  modalOverlay.classList.add('is-open');
+}
+feedbackBtn.addEventListener('click', openModal);
 
 function closeModal() {
   modalOverlay.classList.remove('is-open');
@@ -120,39 +125,11 @@ modalForm.addEventListener('submit', async e => {
     descr: messageInput.value.trim(),
   };
 
-  console.log(data);
   showLoader();
 
-  try {
-    const response = await axios.post(baseURL, data);
-    if (response.status === 200 || response.status === 201) {
-      iziToast.success({
-        title: 'Success',
-        message: 'Feedback submitted successfully!',
-        position: 'topRight',
-        timeout: 3000,
-        pauseOnHover: true,
-      });
-      closeModal();
-      resetForm();
-    } else {
-      iziToast.error({
-        title: 'Error',
-        message: 'Failed to submit feedback. Please try again later.',
-        position: 'topRight',
-        timeout: 3000,
-        pauseOnHover: true,
-      });
-    }
-  } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Failed to submit feedback. Please try again later.',
-      position: 'topRight',
-      timeout: 3000,
-      pauseOnHover: true,
-    });
-  } finally {
-    hideLoader();
-  }
+  await postFeedback(data);
+
+  closeModal();
+  resetForm();
+  hideLoader();
 });
