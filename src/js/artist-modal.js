@@ -3,14 +3,14 @@ import { showLoader, hideLoader } from './helpers';
 import { refs } from './refs';
 
 function onModalOverlayClick(event) {
-  if (event.target === refs.modalOverlay) {
+  if (event.target === refs.modalOverlayArtists) {
     closeModal();
   }
 }
 
 function onDocumentKeydown(event) {
   if (
-    refs.modalOverlay.classList.contains('is-open') &&
+    refs.modalOverlayArtists.classList.contains('is-open') &&
     event.key === 'Escape'
   ) {
     closeModal();
@@ -44,7 +44,6 @@ function formatDuration(milliseconds) {
     }
     milliseconds = numMilliseconds;
   }
-  milliseconds = numMilliseconds;
 
   if (
     milliseconds === null ||
@@ -181,20 +180,20 @@ async function openArtistModal(artistId) {
   }
   refs.modalAlboms.insertAdjacentHTML('beforeend', allAlbumsMarkup);
 
-  refs.modalOverlay.classList.add('is-open');
+  refs.modalOverlayArtists.classList.add('is-open');
   refs.body.classList.add('no-scroll');
 
   refs.closeModalBtn.addEventListener('click', closeModal);
-  refs.modalOverlay.addEventListener('click', onModalOverlayClick);
+  refs.modalOverlayArtists.addEventListener('click', onModalOverlayClick);
   document.addEventListener('keydown', onDocumentKeydown);
   hideLoader();
 }
 
 function closeModal() {
-  refs.modalOverlay.classList.remove('is-open');
+  refs.modalOverlayArtists.classList.remove('is-open');
   refs.body.classList.remove('no-scroll');
   refs.closeModalBtn.removeEventListener('click', closeModal);
-  refs.modalOverlay.removeEventListener('click', onModalOverlayClick);
+  refs.modalOverlayArtists.removeEventListener('click', onModalOverlayClick);
   document.removeEventListener('keydown', onDocumentKeydown);
 }
 

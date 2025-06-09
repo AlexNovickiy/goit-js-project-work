@@ -3,7 +3,7 @@
     height: 100vh;
 }
 
-.modal-overlay {
+.modal-overlay-artists {
     position: fixed;
     left: 0;
     top: 0;
@@ -19,7 +19,7 @@
         visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-overlay.is-open {
+.modal-overlay-artists.is-open {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
@@ -64,7 +64,7 @@
     }
 }
 
-.modal-overlay:not(.is-open) .modal {
+.modal-overlay-artists:not(.is-open) .modal {
     transform: translate(-50%, -50%) scale(1.5);
 }
 
