@@ -8,4 +8,12 @@ export const refs = {
   artistsGrid: document.getElementById('artists-card-id'),
   loadMoreBtn: document.getElementById('load-more-btn'),
   loader: document.querySelector('.modal-loader'),
+  modalOverlay: document.querySelector('.modal-overlay'),
+ body: document.querySelector('body'),
+ closeModalBtn: document.querySelector('.close-btn'),
+ titlePhoto: document.querySelector('.ph-artist'),
+ titleName: document.querySelector('.modal-info-title'),
+ aboutArtist: document.querySelector('.modal-info-card'),
+ modalAlboms: document.querySelector('.modal-alboms'),
+  artistsSection: document.querySelector('#artists-card-id'),
 };
