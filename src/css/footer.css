@@ -5,18 +5,20 @@
 .ftr-div-flex {
 }
 .ftr-container {
-  margin: 0 0 48px 0;
+  margin: 48px 0 48px 0;
 }
 .href-social-icon {
   fill: #764191;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 32px 0;
+  margin: 0 0 0 0;
 }
 .ftr-social {
 }
 .logo-icon {
+  fill: #764191;
+  margin-bottom: 32px;
 }
 .nav-list-footer {
   display: flex;
@@ -25,7 +27,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 20px;
+  gap: 32px;
 }
 .nav-item-footer {
 }
@@ -36,21 +38,23 @@
 }
 .ftr-divcont {
   border-top: #fff 1px solid;
+  margin: 0 0 48px 0;
 }
 .ftr-soc-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 32px;
 }
 .social-list-ftr {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 32px;
   list-style: none;
-  padding: 20px;
+  margin: 24px 0 0 0;
 }
 .lishka-icon {
 }
@@ -73,6 +77,17 @@
       max-width: 768px;
       padding: 0 32px;
     } */
+  .ftr-soc-container {
+    flex-direction: row-reverse;
+  }
+  .p-ftr {
+    margin: 0 auto 0 0;
+  }
+  .nav-list-footer {
+    flex-direction: row;
+    justify-content: center;
+    gap: 64px;
+  }
 }
 
 /* Styles for Desktop devices */
@@ -81,4 +96,15 @@
       max-width: 1440px;
       padding: 0 64px;
     } */
+  .ftr-soc-container {
+    flex-direction: row-reverse;
+  }
+  .p-ftr {
+    margin: 0 auto 0 0;
+  }
+  .nav-list-footer {
+    flex-direction: row;
+    justify-content: center;
+    gap: 64px;
+  }
 }
