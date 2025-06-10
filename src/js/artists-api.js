@@ -113,3 +113,15 @@ export async function postFeedback(feedback) {
     });
   }
 }
+
+export async function fetchArtists(page, limit) {
+  try {
+    const response = await axios.get(`${API_BASE_URL}${API_ARTISTS_ENDPOINT}`, {
+      params: { page, limit },
+    });
+    return response.data.artists || [];
+  } catch (error) {
+    console.error('Не вдалося завантажити артистів:', error);
+    return [];
+  }
+}
