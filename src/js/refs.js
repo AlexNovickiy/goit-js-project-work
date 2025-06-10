@@ -19,7 +19,6 @@ export const refs = {
   modalOverlay: document.querySelector('.modal-overlay'),
   body: document.querySelector('body'),
   closeModalBtn: document.querySelector('.close-btn'),
-  titlePhoto: document.querySelector('.ph-artist'),
   titleName: document.querySelector('.modal-info-title'),
   aboutArtist: document.querySelector('.modal-info-card'),
   modalAlboms: document.querySelector('.modal-alboms'),

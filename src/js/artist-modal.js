@@ -62,13 +62,11 @@ function formatDuration(milliseconds) {
   return `${minutes}:${formattedSeconds}`;
 }
 
-async function openArtistModal(artistId) {
+async function openArtistModal(artistId, genresArrayFromCard = []) {
   showLoader();
-  const existingDescription = refs.aboutArtist.querySelector(
-    '.modal-info-description'
-  );
-  if (existingDescription) {
-    existingDescription.remove();
+const descriptionContainer = refs.aboutArtist.querySelector('.modal-info-description');
+  if (descriptionContainer) {
+      descriptionContainer.innerHTML = ''; 
   }
   refs.modalAlboms.innerHTML = '';
   const response = await getAlbumsByArtist(artistId);
@@ -85,12 +83,16 @@ async function openArtistModal(artistId) {
   } = response;
 
   refs.titleName.textContent = strArtist || 'N/A';
-  refs.titlePhoto.src = strArtistThumb || '';
-  refs.titlePhoto.alt = strArtist || 'Artist photo';
 
   const yearsActiveDisplay = formatYearsActive(intFormedYear, intDisbandedYear);
-
-  const infoMarkup = `<div class="modal-info-description">
+  let genresMarkup = '';
+  if (genresArrayFromCard && Array.isArray(genresArrayFromCard) && genresArrayFromCard.length > 0) {
+    genresMarkup = genresArrayFromCard
+      .map(genre => `<span class="genre-tag">${genre.trim()}</span>`)
+      .join('');
+  }
+  const infoMarkup = ` <img class="ph-artist" src="${strArtistThumb}" alt="${strArtist}" />
+  <div class="modal-info-description">
             <div class="modal-info-list">
                 <div class="wrap-info-item">
                 <div class="wrapp">
@@ -121,9 +123,10 @@ async function openArtistModal(artistId) {
                     ${strBiographyEN || 'No biography available.'}
                 </p>
             </div>
-        </div>`;
+            ${genresMarkup ? `<div class="genres">${genresMarkup}</div>` : ''}
+            </div>`;;
 
-  refs.aboutArtist.insertAdjacentHTML('beforeend', infoMarkup);
+  refs.aboutArtist.innerHTML = infoMarkup;
 
   let allAlbumsMarkup = '';
   if (albumsList && albumsList.length > 0) {
@@ -196,6 +199,7 @@ function closeModal() {
   refs.closeModalBtn.removeEventListener('click', closeModal);
   refs.modalOverlayArtists.removeEventListener('click', onModalOverlayClick);
   document.removeEventListener('keydown', onDocumentKeydown);
+    hideLoader();
 }
 
 if (refs.artistsSection) {
@@ -204,7 +208,17 @@ if (refs.artistsSection) {
 
     if (learnMoreButton) {
       const artistId = learnMoreButton.dataset.artistId;
-      openArtistModal(artistId);
+      let genresArray = [];
+      const genresString = learnMoreButton.dataset.genres;
+      if (genresString) {
+        try {
+          genresArray = JSON.parse(genresString);
+        } catch (e) {
+          console.error("Error parsing genres from data attribute:", e);
+          genresArray = [];
+        }
+      }
+      openArtistModal(artistId, genresArray);
     }
   });
 } else {
