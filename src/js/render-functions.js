@@ -1,4 +1,7 @@
-export function renderStarsAdvanced(rating, spritePath = './img/sprite.svg') {
+export function renderStarsAdvanced(
+  rating,
+  spritePath = '../img/sprite.svg?url'
+) {
   const fullStars = Math.floor(rating);
   const decimal = rating - fullStars;
   const percentage = Math.round(decimal * 100);
