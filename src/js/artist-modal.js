@@ -1,6 +1,7 @@
 import { getAlbumsByArtist } from './artists-api';
 import { showLoader, hideLoader } from './helpers';
 import { refs } from './refs';
+import linkSVGYoutube from '../img/sprite.svg?url';
 
 function onModalOverlayClick(event) {
   if (event.target === refs.modalOverlayArtists) {
@@ -140,7 +141,7 @@ async function openArtistModal(artistId) {
             typeof youtubeLink === 'string' && youtubeLink.trim() !== ''
               ? `<a class="link-icon-youtube" href="${youtubeLink}" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
                                 <svg class="icon-you-tube">
-                                    <use href="/img/sprite.svg#icon-you-tube"></use>
+                                    <use href="${linkSVGYoutube}#icon-you-tube"></use>
                                 </svg>
                             </a>`
               : `<span class="youtube-link-placeholder"></span>`;
