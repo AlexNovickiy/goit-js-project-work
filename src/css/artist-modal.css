@@ -33,6 +33,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-width: 288px;
     width: 100%;
     height: 100%;
     padding: 52px 8px;
@@ -127,7 +128,12 @@
 
 .detail-value,
 .modal-info-bio {
+    display: -webkit-box;
     line-height: 150%;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+        text-overflow: ellipsis;
 }
 
 .genres {
@@ -277,6 +283,7 @@
 
 @media screen and (min-width: 768px) {
     .modal {
+        max-width: 702px;
         padding: 64px 24px;
         gap: 48px;
 
@@ -296,6 +303,13 @@
             border: 2px solid #2a2a2a;
         }
     }
+
+    /* .modal-overlay-artists .container {
+        max-width: 702px;
+        width: 100%;
+        padding: 0 24px; 
+    } */
+
 
     .close-btn {
         margin: 16px 47px;
@@ -331,8 +345,7 @@
     }
 
     .modal-alboms-list-item {
-        min-width: 272px;
-        width: calc((100% - 96px) / 4);
+        width: calc((100% - 32px) / 2);
     }
 
     .albom-track {
@@ -342,6 +355,22 @@
 }
 
 @media screen and (min-width: 1440px) {
+
+    .modal {
+        max-width: 1312px;
+        padding: 64px;
+    }
+
+    .modal-overlay-artists .container {
+            max-width: 1312px;
+            width: 100%;
+            padding: 0 64px;
+    }
+
+    .modal-alboms-list-item {
+        width: calc((100% - 96px) / 4);
+    }
+
     .close-btn {
         margin: 16px 16px;
     }
