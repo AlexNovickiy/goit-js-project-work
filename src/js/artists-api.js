@@ -27,11 +27,6 @@ export async function getArtists(
     const response = await axios.get(`${API_BASE_URL}${API_ARTISTS_ENDPOINT}`, {
       params,
     });
-    izitoast.success({
-      title: 'Success',
-      message: 'Artists fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -45,11 +40,6 @@ export async function getArtists(
 export async function getGenres() {
   try {
     const response = await axios.get(`${API_BASE_URL}${API_GENRES_ENDPOINT}`);
-    izitoast.success({
-      title: 'Success',
-      message: 'Genres fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -65,11 +55,6 @@ export async function getAlbumsByArtist(artistId) {
     const response = await axios.get(
       `${API_BASE_URL}${API_ARTISTS_ENDPOINT}/${artistId}${API_ARTISTS_ALBUMS_ENDPOINT}`
     );
-    izitoast.success({
-      title: 'Success',
-      message: 'Albums fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -85,11 +70,6 @@ export async function getArtistById(artistId) {
     const response = await axios.get(
       `${API_BASE_URL}${API_ARTISTS_ENDPOINT}/${artistId}`
     );
-    izitoast.success({
-      title: 'Success',
-      message: 'Artist fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -108,11 +88,6 @@ export async function getFeedbacks(page = 1) {
         params: { page },
       }
     );
-    izitoast.success({
-      title: 'Success',
-      message: 'Feedbacks fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -129,11 +104,6 @@ export async function postFeedback(feedback) {
       `${API_BASE_URL}${API_FEEDBACKS_ENDPOINT}`,
       feedback
     );
-    izitoast.success({
-      title: 'Success',
-      message: 'Feedback submitted successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
