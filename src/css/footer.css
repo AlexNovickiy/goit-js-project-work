@@ -37,7 +37,7 @@
   line-height: 150%;
 }
 .ftr-divcont {
-  border-top: #fff 1px solid;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin: 0 0 48px 0;
 }
 .ftr-soc-container {
@@ -46,6 +46,7 @@
   justify-content: center;
   align-items: center;
   gap: 32px;
+  padding: 24px 0 24px 0;
 }
 .social-list-ftr {
   display: flex;
@@ -54,7 +55,7 @@
   align-items: center;
   gap: 32px;
   list-style: none;
-  margin: 24px 0 0 0;
+  margin: 0 0 0 0;
 }
 .lishka-icon {
 }
@@ -79,6 +80,7 @@
     } */
   .ftr-soc-container {
     flex-direction: row-reverse;
+    padding: 24px 0 0 0;
   }
   .p-ftr {
     margin: 0 auto 0 0;
@@ -87,6 +89,9 @@
     flex-direction: row;
     justify-content: center;
     gap: 64px;
+  }
+  .ftr-container {
+    margin: 80px 0 80px 0;
   }
 }
 
@@ -98,6 +103,7 @@
     } */
   .ftr-soc-container {
     flex-direction: row-reverse;
+    padding: 24px 0 0 0;
   }
   .p-ftr {
     margin: 0 auto 0 0;
@@ -106,5 +112,8 @@
     flex-direction: row;
     justify-content: center;
     gap: 64px;
+  }
+  .ftr-container {
+    margin: 80px 0 80px 0;
   }
 }
