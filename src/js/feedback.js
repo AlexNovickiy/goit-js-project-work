@@ -5,46 +5,65 @@ import { renderStarsAdvanced } from './render-functions';
 
 function renderFeedbackSlide({ name, rating, descr }) {
   return `
-    <li class="swiper-slide">
+    <div class="swiper-slide">
       <ul class="feedback-stars">${renderStarsAdvanced(rating)}</ul>
       <p class="feedback-text">"${descr}"</p>
       <p class="feedback-author">${name}</p>
-    </li>
+    </div>
   `;
+}
+function updateArrows(realIndex, first, last) {
+  const prev = document.querySelector('.swiper-button-prev');
+  const next = document.querySelector('.swiper-button-next');
+
+  prev.classList.toggle('disabled', realIndex === first);
+  next.classList.toggle('disabled', realIndex === last);
 }
 
 async function initFeedbackSwiper() {
   const { data: feedbacks } = await getFeedbacks();
+  const limited = feedbacks.slice(0, 30);
+  const first = 0;
+  const last = limited.length - 1;
+  const middle = Math.floor(limited.length / 2);
 
-  const first = feedbacks[0];
-  const last = feedbacks[feedbacks.length - 1];
-  const middleIndex =
-    feedbacks.length > 2
-      ? Math.floor(
-          Math.random() * feedbacks.slice(1, feedbacks.length - 1).length
-        )
-      : 0;
-  const middle = feedbacks[middleIndex];
+  document.querySelector('.swiper-wrapper').innerHTML = limited
+    .map(renderFeedbackSlide)
+    .join('');
 
-  const slides = feedbacks.length === 2 ? [first, last] : [first, middle, last];
-
-  const swiperWrapper = document.querySelector('.swiper-wrapper');
-  swiperWrapper.innerHTML = slides.map(renderFeedbackSlide).join('');
-
-  new Swiper('.swiper', {
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 1,
+    loop: false,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      bulletClass: 'swiper-pagination-bullet',
-      bulletActiveClass: 'swiper-pagination-bullet-active',
-    },
-    slidesPerView: 1,
-    loop: true,
   });
-}
 
+  const pag = document.querySelector('.swiper-pagination');
+  pag.innerHTML = `
+    <span class="swiper-pagination-bullet" data-i="${first}"></span>
+    <span class="swiper-pagination-bullet" data-i="${middle}"></span>
+    <span class="swiper-pagination-bullet" data-i="${last}"></span>`;
+
+  pag.addEventListener('click', e => {
+    if (e.target.classList.contains('swiper-pagination-bullet')) {
+      swiper.slideTo(+e.target.dataset.i);
+    }
+  });
+
+  function updateBullets() {
+    const idx = swiper.realIndex;
+    document.querySelectorAll('.swiper-pagination-bullet').forEach(el => {
+      el.classList.toggle('active', +el.dataset.i === idx);
+    });
+    updateArrows(idx, first, last);
+  }
+
+  swiper.on('slideChange', () => {
+    updateBullets();
+    updateArrows(swiper.realIndex, first, last);
+  });
+  updateBullets();
+}
 initFeedbackSwiper();
