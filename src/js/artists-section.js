@@ -165,6 +165,7 @@ async function fetchAndRenderArtists(clear = false) {
   if (clear && artists.length === 0) {
     emptyState.classList.remove('hidden');
     artistsCard.innerHTML = '';
+    spinner.classList.add('hidden');
     return;
   }
   renderArtistCards(artists, artistsGrid);
