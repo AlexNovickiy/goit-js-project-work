@@ -27,7 +27,8 @@ const emptyState = document.getElementById('emptyState');
 const searchAndFiltersOpener = document.querySelector(
   '.search-and-filters-opener'
 );
-const filtersPanel = document.querySelector('.filters-panel');
+const filtersPanelForm = document.querySelector('.filters-panel');
+const scrollToTopBtn = document.querySelector('.scrollBtnUp');
 
 // --- Dropdown logic (only one open at a time) ---
 function closeAllDropdowns() {
@@ -61,8 +62,8 @@ document.addEventListener('click', e => {
 
 // --- Show/hide filters panel on mobile ---
 searchAndFiltersOpener.addEventListener('click', () => {
-  filtersPanel.classList.toggle('open');
-  if (filtersPanel.classList.contains('open')) {
+  filtersPanelForm.classList.toggle('open');
+  if (filtersPanelForm.classList.contains('open')) {
     iconArrowOpenCloseContainer.innerHTML = `<use href="${svgArrowsBasePuth}#icon-chevron-down-arrow"></use>`;
   } else {
     iconArrowOpenCloseContainer.innerHTML = `<use href="${svgArrowsBasePuth}#icon-chevron-up-arrow"></use>`;
@@ -85,19 +86,22 @@ async function populateGenres() {
 populateGenres();
 
 // --- Handlers ---
-genreList.addEventListener('click', e => {
+sortingList.addEventListener('click', e => {
   if (e.target.classList.contains('dropdown-item')) {
-    selectedGenre = e.target.dataset.value;
-    genreToggle.textContent = selectedGenre || 'Default';
+    selectedSort =
+      e.target.dataset.value === 'default' ? '' : e.target.dataset.value;
+    sortingToggle.textContent = selectedSort || 'Default';
     currentPage = 1;
     closeAllDropdowns();
     fetchAndRenderArtists(true);
   }
 });
-sortingList.addEventListener('click', e => {
+
+genreList.addEventListener('click', e => {
   if (e.target.classList.contains('dropdown-item')) {
-    selectedSort = e.target.dataset.value;
-    sortingToggle.textContent = selectedSort || 'Default';
+    selectedGenre =
+      e.target.dataset.value === 'Default' ? '' : e.target.dataset.value;
+    genreToggle.textContent = selectedGenre || 'Default';
     currentPage = 1;
     closeAllDropdowns();
     fetchAndRenderArtists(true);
@@ -110,7 +114,8 @@ searchInput.addEventListener('keydown', e => {
     fetchAndRenderArtists(true);
   }
 });
-document.querySelector('.icon-search').addEventListener('click', () => {
+filtersPanelForm.addEventListener('submit', e => {
+  e.preventDefault();
   searchValue = searchInput.value.trim();
   currentPage = 1;
   fetchAndRenderArtists(true);
@@ -152,8 +157,8 @@ async function fetchAndRenderArtists(clear = false) {
   const params = {
     page: currentPage,
     name: searchValue,
-    sortName: selectedSort,
-    genre: selectedGenre,
+    sortName: selectedSort || undefined,
+    genre: selectedGenre || undefined,
   };
   const data = await getArtists(
     params.page,
@@ -179,3 +184,28 @@ async function fetchAndRenderArtists(clear = false) {
 
 // --- Initial load ---
 fetchAndRenderArtists(true);
+
+// --- Scroll to top button ---
+
+function handleToggleScrollToTopButton() {
+  if (window.scrollY > (document.body.scrollHeight - window.innerHeight) / 2) {
+    scrollToTopBtn.classList.add('visible-scrollBtn');
+  } else {
+    scrollToTopBtn.classList.remove('visible-scrollBtn');
+  }
+
+  function handleScrollToTopButtonClick() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
+  if (scrollToTopBtn.classList.contains('visible-scrollBtn')) {
+    scrollToTopBtn.addEventListener('click', handleScrollToTopButtonClick);
+  } else {
+    scrollToTopBtn.removeEventListener('click', handleScrollToTopButtonClick);
+  }
+}
+
+document.addEventListener('scroll', handleToggleScrollToTopButton);
