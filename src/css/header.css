@@ -74,6 +74,10 @@ body {
     display: none;
   }
 
+  .logo-icon {
+    fill: #fff;
+  }
+
   .nav-header {
     display: flex;
   }

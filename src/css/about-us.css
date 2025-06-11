@@ -1,7 +1,6 @@
 /* Styles for Mobile devices */
-
 .about {
-  padding: 64px 16px;
+  padding: 64px 0;
 }
 .about-img-wrapper {
   margin-bottom: 48px;
@@ -14,12 +13,13 @@
   width: 100%;
   height: 100%;
 }
-.about-container {
-}
+
 .about-logo-icon {
   margin-bottom: 20px;
+  fill: #fff;
 }
 .about-title {
+  font-family: 'Epilogue', sans-serif;
   font-weight: 700;
   font-size: 44px;
   line-height: 1.2;
@@ -35,9 +35,6 @@
 
 /* Styles for Tablet devices */
 @media screen and (min-width: 768px) {
-  .about {
-    padding: 64px 32px;
-  }
   .about-text {
     font-size: 20px;
   }
@@ -49,13 +46,18 @@
     max-width: 704px;
     width: 100%;
     height: auto;
+    margin-bottom: 24px;
+  }
+
+  .about-logo-icon {
+    margin-bottom: 24px;
   }
 }
 
 /* Styles for Desktop devices */
 @media screen and (min-width: 1440px) {
   .about {
-    padding: 112px 64px;
+    padding: 112px 0;
   }
   .about-container {
     display: flex;
@@ -65,12 +67,14 @@
   .about-img-wrapper {
     margin-bottom: 0;
     width: 100%;
+
+    max-width: 640px;
   }
   .about-content-logo {
     width: 640px;
   }
   .about-title {
     font-size: 60px;
-    font-family: 'Epilogue', sans-serif;
+    margin-bottom: 24px;
   }
 }
