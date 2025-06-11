@@ -100,7 +100,9 @@
 
 .artist-card-link {
   border-radius: 12px;
-
+  max-width: 125px;
+  width: 100%;
+  padding: 0;
   border: none;
   background-color: transparent;
   display: flex;
@@ -110,6 +112,19 @@
   line-height: 1.5;
   color: #fff;
   align-items: center;
+  transition: 0.3s ease;
+}
+
+.artist-card-link:hover,
+.artist-card-link:focus {
+  color: #a852d3;
+}
+.artist-card-link:hover .icon-lernmore,
+.artist-card-link:focus .icon-lernmore {
+  fill: #a852d3;
+}
+
+.icon-lernmore {
   transition: 0.3s ease;
 }
 
