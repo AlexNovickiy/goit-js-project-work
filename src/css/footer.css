@@ -1,5 +1,5 @@
 .ftr {
-    padding: 48px 0;
+  padding: 48px 0;
 }
 
 .ftr-container {
@@ -31,11 +31,8 @@
   color: #764191;
 }
 
-
-
 .logo-icon-footer {
   fill: #764191;
-  margin-bottom: 32px;
 }
 .nav-list-footer {
   display: flex;
@@ -43,7 +40,7 @@
   align-items: center;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 32px;
   gap: 32px;
 }
 
