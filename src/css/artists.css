@@ -2,13 +2,15 @@
   padding-top: 64px;
   padding-bottom: 64px;
 }
-.artists-section-title {
+
+.artists-small-title {
+  display: block;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
   margin-bottom: 16px;
 }
+
 .artists-section-subtitle {
   font-weight: 700;
   font-size: 44px;
@@ -185,7 +187,6 @@
   .artists-card {
     gap: 32px;
     margin: 0;
-
   }
   .artist-card {
     width: 704px;
@@ -233,11 +234,10 @@
   }
 }
 
-
 .filters-panel {
   width: 304px;
   flex-shrink: 0;
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
   border-radius: 12px;
   padding: 24px;
   border: 1px solid #262626;
