@@ -1,6 +1,7 @@
 import { fetchArtists } from './artists-api';
 import { renderArtistCards } from './render-functions';
 import { refs } from './refs';
+import { initializeCards } from './filters.js';
 
 let currentPage = 1;
 const perPage = 8;
@@ -21,12 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (artists.length > 0) {
       renderArtistCards(artists, artistsGrid);
+
+      initializeCards();
+
       currentPage++;
-      if (artists.length < perPage) {
-        loadMoreBtn.style.display = 'none';
-      } else {
-        loadMoreBtn.style.display = 'flex';
-      }
+      loadMoreBtn.style.display = artists.length < perPage ? 'none' : 'flex';
     } else {
       loadMoreBtn.style.display = 'none';
     }

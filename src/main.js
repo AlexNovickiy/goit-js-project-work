@@ -7,4 +7,6 @@ import './js/mobile-menu';
 import './js/feedback';
 import './js/feedback-modal';
 import './js/artists-section';
-import './js/artist-modal';
+import './js/artist-modal';;
+import './css/filters.css';
+import './js/filters.js';
