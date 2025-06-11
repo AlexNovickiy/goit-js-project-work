@@ -261,11 +261,17 @@
     margin: 0;
 }
 
+.link-icon-youtube:hover .icon-you-tube,
+.link-icon-youtube:focus .icon-you-tube {
+    fill: #764191;
+}
+
 .icon-you-tube {
     display: block;
     fill: #ffffff;
     width: 24px;
     height: 24px;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-alboms-list-item li.albom-track .youtube-link-placeholder {
