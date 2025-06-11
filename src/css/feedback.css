@@ -141,21 +141,6 @@
   padding-bottom: 64px;
 }
 
-.btn-leave-feedback {
-  border-radius: 12px;
-  padding: 10px 24px;
-  width: 288px;
-  height: 47px;
-  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
-  background: #764191;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #fff;
-}
 
 @media screen and (min-width: 768px) {
   .feedback-section .swiper-button-prev,
@@ -212,7 +197,12 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 150%;
-    transition: background-color 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.feedback-btn:hover,
+.feedback-btn:focus {
+    background-color: #764191;
 }
 
 @media screen and (min-width: 768px) {
