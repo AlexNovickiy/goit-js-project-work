@@ -160,7 +160,8 @@
   transition: background-color 0.3s ease;
 }
 
-.load-more-button:hover {
+.load-more-button:hover,
+.load-more-button:focus {
   background-color: #a852d3;
 }
 .icon-lernmore,
