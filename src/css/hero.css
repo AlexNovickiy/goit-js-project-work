@@ -32,7 +32,6 @@
   flex-direction: column;
 }
 
-
 .hero-title {
   font-weight: 700;
   font-size: 48px;
@@ -118,7 +117,6 @@
 }
 
 @media screen and (min-width: 768px) {
-
   .hero-button {
     padding: 10px 44px;
     max-width: 246px;
@@ -159,10 +157,11 @@
 
 @media screen and (min-width: 1440px) {
   .hero-button {
-      padding: 10px 24px;
-      max-width: 206px;
-      width: 100%;
-    }
+    padding: 10px 24px;
+    max-width: 206px;
+    width: 100%;
+  }
+
   .hero-section {
     display: flex;
     justify-content: center;
@@ -172,10 +171,14 @@
 
   .hero-container {
     display: flex;
+    align-items: center;
     flex-direction: row;
     gap: 31px;
   }
 
+  .hero-content {
+    margin-bottom: 0;
+  }
 
   .hero-title {
     font-size: 84px;
@@ -200,11 +203,5 @@
     .hero-image {
       background-image: url(/img/hero-images/hero-image-desktop@2x.webp);
     }
-  }
-
-  .hero-content {
-    margin-bottom: 0;
-    padding-top: 216px;
-    padding-bottom: 216px;
   }
 }
