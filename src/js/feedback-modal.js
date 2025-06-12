@@ -51,11 +51,13 @@ function updateStars(rating) {
 /////////////////////////////  Закриття та відкриття  ////////////////////////////////
 function openModal() {
   modalOverlay.classList.add('is-open');
+  document.addEventListener('keydown', closeModalOnClickEscape);
 }
 feedbackBtn.addEventListener('click', openModal);
 
 function closeModal() {
   modalOverlay.classList.remove('is-open');
+  document.removeEventListener('keydown', closeModalOnClickEscape);
 }
 
 closeBtn.addEventListener('click', closeModal);
@@ -66,12 +68,13 @@ modalOverlay.addEventListener('click', event => {
   }
 });
 
-document.addEventListener('keydown', e => {
+function closeModalOnClickEscape(e) {
   if (e.key === 'Escape') {
     closeModal();
   }
-});
-/////////////////////////////////////////////////////////////////
+}
+/////
+
 function validateForm() {
   let isValid = true;
   let messages = [];

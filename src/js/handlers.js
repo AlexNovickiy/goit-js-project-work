@@ -7,8 +7,9 @@ export function onBtnOpenMenuClick() {
   refs.menuAnchorAbout.addEventListener('click', onBtnCloseMenuClick);
   refs.menuAnchorArtists.addEventListener('click', onBtnCloseMenuClick);
   refs.menuAnchorReviews.addEventListener('click', onBtnCloseMenuClick);
-}
 
+  document.querySelector('body').classList.add(' ');
+}
 export function onBtnCloseMenuClick() {
   refs.headerMenuContainer.classList.remove('is-open');
   window.removeEventListener('resize', onWindowResizeCloseMenu);
@@ -16,6 +17,8 @@ export function onBtnCloseMenuClick() {
   refs.menuAnchorAbout.removeEventListener('click', onBtnCloseMenuClick);
   refs.menuAnchorArtists.removeEventListener('click', onBtnCloseMenuClick);
   refs.menuAnchorReviews.removeEventListener('click', onBtnCloseMenuClick);
+
+  document.querySelector('body').classList.remove('no-scroll');
 }
 
 function onWindowResizeCloseMenu() {

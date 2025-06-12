@@ -128,6 +128,7 @@
   justify-content: center;
   gap: 9px;
   margin: 0 auto 16px;
+  padding: 10px 0;
   position: static !important;
 }
 
@@ -147,7 +148,7 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  background-color: #a76cdb;
+  background-color: #764191;
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2);
   color: white;
   border-radius: 12px;
@@ -163,7 +164,7 @@
 
 .feedback-btn:hover,
 .feedback-btn:focus {
-  background-color: #764191;
+  background-color: #a76cdb;
 }
 
 @media screen and (min-width: 768px) {
@@ -197,5 +198,9 @@
   }
   .feedback-btn {
     width: 177px;
+  }
+
+  .feedback-author {
+    margin-bottom: 75px;
   }
 }

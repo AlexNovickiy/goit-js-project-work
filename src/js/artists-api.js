@@ -104,6 +104,12 @@ export async function postFeedback(feedback) {
       `${API_BASE_URL}${API_FEEDBACKS_ENDPOINT}`,
       feedback
     );
+    izitoast.success({
+      title: 'Success',
+      message: 'Feedback submitted successfully.',
+      position: 'topRight',
+      timeout: 3000,
+    });
     return response.data;
   } catch (error) {
     izitoast.error({
