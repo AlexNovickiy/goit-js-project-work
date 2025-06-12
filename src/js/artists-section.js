@@ -38,17 +38,29 @@ function closeAllDropdowns() {
 genreToggle.addEventListener('click', () => {
   if (genreDropdown.classList.contains('open')) {
     genreDropdown.classList.remove('open');
+    genreDropdown.querySelector(
+      '.icon-chevron'
+    ).innerHTML = `<use href="${svgArrowsBasePuth}#icon-chevron-up-arrow"></use>`;
   } else {
     closeAllDropdowns();
     genreDropdown.classList.add('open');
+    genreDropdown.querySelector(
+      '.icon-chevron'
+    ).innerHTML = `<use href="${svgArrowsBasePuth}#icon-chevron-down-arrow"></use>`;
   }
 });
 sortingToggle.addEventListener('click', () => {
   if (sortingDropdown.classList.contains('open')) {
     sortingDropdown.classList.remove('open');
+    sortingDropdown.querySelector(
+      '.icon-chevron'
+    ).innerHTML = `<use href="${svgArrowsBasePuth}#icon-chevron-up-arrow"></use>`;
   } else {
     closeAllDropdowns();
     sortingDropdown.classList.add('open');
+    sortingDropdown.querySelector(
+      '.icon-chevron'
+    ).innerHTML = `<use href="${svgArrowsBasePuth}#icon-chevron-down-arrow"></use>`;
   }
 });
 document.addEventListener('click', e => {
@@ -90,7 +102,9 @@ sortingList.addEventListener('click', e => {
   if (e.target.classList.contains('dropdown-item')) {
     selectedSort =
       e.target.dataset.value === 'default' ? '' : e.target.dataset.value;
-    sortingToggle.textContent = selectedSort || 'Default';
+    sortingToggle.querySelector('.dropdown-title').textContent = `${
+      selectedSort || 'Default'
+    }`;
     currentPage = 1;
     closeAllDropdowns();
     fetchAndRenderArtists(true);
@@ -101,7 +115,9 @@ genreList.addEventListener('click', e => {
   if (e.target.classList.contains('dropdown-item')) {
     selectedGenre =
       e.target.dataset.value === 'Default' ? '' : e.target.dataset.value;
-    genreToggle.textContent = selectedGenre || 'Default';
+    genreToggle.querySelector('.dropdown-title').textContent = `${
+      selectedGenre || 'Default'
+    }`;
     currentPage = 1;
     closeAllDropdowns();
     fetchAndRenderArtists(true);
