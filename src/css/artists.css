@@ -48,7 +48,6 @@
   object-position: center top;
   border-radius: 16px;
   object-fit: cover;
-  margin-bottom: 24px;
 }
 
 .artist-card-content {
@@ -100,7 +99,7 @@
 
 .artist-card-link {
   border-radius: 12px;
-
+  padding: 0;
   border: none;
   background-color: transparent;
   display: flex;
