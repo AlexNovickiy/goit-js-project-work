@@ -27,11 +27,6 @@ export async function getArtists(
     const response = await axios.get(`${API_BASE_URL}${API_ARTISTS_ENDPOINT}`, {
       params,
     });
-    izitoast.success({
-      title: 'Success',
-      message: 'Artists fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -45,11 +40,6 @@ export async function getArtists(
 export async function getGenres() {
   try {
     const response = await axios.get(`${API_BASE_URL}${API_GENRES_ENDPOINT}`);
-    izitoast.success({
-      title: 'Success',
-      message: 'Genres fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -65,11 +55,6 @@ export async function getAlbumsByArtist(artistId) {
     const response = await axios.get(
       `${API_BASE_URL}${API_ARTISTS_ENDPOINT}/${artistId}${API_ARTISTS_ALBUMS_ENDPOINT}`
     );
-    izitoast.success({
-      title: 'Success',
-      message: 'Albums fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -80,18 +65,11 @@ export async function getAlbumsByArtist(artistId) {
   }
 }
 
-getAlbumsByArtist('65ada69eaf9f6d155db48612');
-
 export async function getArtistById(artistId) {
   try {
     const response = await axios.get(
       `${API_BASE_URL}${API_ARTISTS_ENDPOINT}/${artistId}`
     );
-    izitoast.success({
-      title: 'Success',
-      message: 'Artist fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -102,8 +80,6 @@ export async function getArtistById(artistId) {
   }
 }
 
-getArtistById('65ada69eaf9f6d155db48612');
-
 export async function getFeedbacks(page = 1) {
   try {
     const response = await axios.get(
@@ -112,11 +88,6 @@ export async function getFeedbacks(page = 1) {
         params: { page },
       }
     );
-    izitoast.success({
-      title: 'Success',
-      message: 'Feedbacks fetched successfully!',
-      position: 'topRight',
-    });
     return response.data;
   } catch (error) {
     izitoast.error({
@@ -135,8 +106,9 @@ export async function postFeedback(feedback) {
     );
     izitoast.success({
       title: 'Success',
-      message: 'Feedback submitted successfully!',
+      message: 'Feedback submitted successfully.',
       position: 'topRight',
+      timeout: 3000,
     });
     return response.data;
   } catch (error) {
@@ -145,5 +117,17 @@ export async function postFeedback(feedback) {
       message: 'Failed to submit feedback.',
       position: 'topRight',
     });
+  }
+}
+
+export async function fetchArtists(page, limit) {
+  try {
+    const response = await axios.get(`${API_BASE_URL}${API_ARTISTS_ENDPOINT}`, {
+      params: { page, limit },
+    });
+    return response.data.artists || [];
+  } catch (error) {
+    console.error('Не вдалося завантажити артистів:', error);
+    return [];
   }
 }
