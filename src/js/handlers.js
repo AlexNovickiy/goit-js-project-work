@@ -8,7 +8,7 @@ export function onBtnOpenMenuClick() {
   refs.menuAnchorArtists.addEventListener('click', onBtnCloseMenuClick);
   refs.menuAnchorReviews.addEventListener('click', onBtnCloseMenuClick);
 
-  document.querySelector('body').classList.add(' ');
+  document.querySelector('body').classList.add('no-scroll');
 }
 export function onBtnCloseMenuClick() {
   refs.headerMenuContainer.classList.remove('is-open');
