@@ -3,6 +3,15 @@ import { showLoader, hideLoader } from './helpers';
 import { refs } from './refs';
 import linkSVGYoutube from '../img/sprite.svg?url';
 
+
+window.history.scrollRestoration = 'manual';
+
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+
+
+
 function onModalOverlayClick(event) {
   if (event.target === refs.modalOverlayArtists) {
     closeModal();
@@ -185,6 +194,9 @@ const descriptionContainer = refs.aboutArtist.querySelector('.modal-info-descrip
   refs.modalAlboms.insertAdjacentHTML('beforeend', allAlbumsMarkup);
 
   refs.modalOverlayArtists.classList.add('is-open');
+
+    const scrollY = window.scrollY || window.pageYOffset;
+  refs.body.style.top = `-${scrollY}px`;
   refs.body.classList.add('no-scroll');
 
   refs.closeModalBtn.addEventListener('click', closeModal);
@@ -195,7 +207,10 @@ const descriptionContainer = refs.aboutArtist.querySelector('.modal-info-descrip
 
 function closeModal() {
   refs.modalOverlayArtists.classList.remove('is-open');
+    const scrollY = parseInt(refs.body.style.top || '0') * -1;
   refs.body.classList.remove('no-scroll');
+    refs.body.style.top = '';
+  window.scrollTo(0, scrollY);
   refs.closeModalBtn.removeEventListener('click', closeModal);
   refs.modalOverlayArtists.removeEventListener('click', onModalOverlayClick);
   document.removeEventListener('keydown', onDocumentKeydown);
