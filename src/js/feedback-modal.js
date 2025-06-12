@@ -56,15 +56,13 @@ function openModal() {
 feedbackBtn.addEventListener('click', openModal);
 
 function closeModal() {
-    modalOverlay.classList.add('is-close');
-  
-    setTimeout(() => {
-      modalOverlay.classList.remove('is-open', 'is-close');
-    }, 300);
-  }
+  modalOverlay.classList.add('is-close');
+
+  setTimeout(() => {
+    modalOverlay.classList.remove('is-open', 'is-close');
+  }, 300);
   document.removeEventListener('keydown', closeModalOnClickEscape);
 }
-
 
 closeBtn.addEventListener('click', closeModal);
 
