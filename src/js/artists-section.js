@@ -162,8 +162,8 @@ resetFiltersBtn.addEventListener('click', () => {
 loadMoreBtn.addEventListener('click', async () => {
   currentPage++;
   await fetchAndRenderArtists();
-  window.scrollTo({
-    top: artistsGrid.offsetTop + artistsGrid.offsetHeight,
+  window.scrollBy({
+    top: document.querySelector('.artist-card').clientHeight * 2,
     behavior: 'smooth',
   });
 });
