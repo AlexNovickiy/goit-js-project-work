@@ -25,5 +25,6 @@ function onWindowResizeCloseMenu() {
   if (window.innerWidth >= 768) {
     refs.headerMenuContainer.classList.remove('is-open');
     window.removeEventListener('resize', onWindowResizeCloseMenu);
+    document.querySelector('body').classList.remove('no-scroll');
   }
 }
