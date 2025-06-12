@@ -141,8 +141,8 @@ resetBtn.addEventListener('click', () => {
   selectedSort = '';
   searchValue = '';
   searchInput.value = '';
-  genreToggle.textContent = 'Default';
-  sortingToggle.textContent = 'Default';
+  genreToggle.querySelector('.dropdown-title').textContent = 'Genres';
+  sortingToggle.querySelector('.dropdown-title').textContent = 'Sorting';
   currentPage = 1;
   fetchAndRenderArtists(true);
 });
@@ -152,8 +152,8 @@ resetFiltersBtn.addEventListener('click', () => {
   selectedSort = '';
   searchValue = '';
   searchInput.value = '';
-  genreToggle.textContent = 'Default';
-  sortingToggle.textContent = 'Default';
+  genreToggle.querySelector('.dropdown-title').textContent = 'Genres';
+  sortingToggle.querySelector('.dropdown-title').textContent = 'Sorting';
   currentPage = 1;
   fetchAndRenderArtists(true);
 });

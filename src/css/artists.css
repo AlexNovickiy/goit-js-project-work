@@ -30,7 +30,7 @@
 }
 .artist-card {
   background-color: #060307;
-
+  gap: 24px;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
@@ -189,7 +189,6 @@
   }
   .artist-card {
     width: 704px;
-    height: 659px;
     min-width: 450px;
   }
   .artist-card-image {
@@ -219,7 +218,6 @@
     justify-content: unset;
     align-items: unset;
     gap: 32px;
-    width: 100%;
     margin: 0;
   }
   .artist-card {
