@@ -30,7 +30,7 @@
 }
 .artist-card {
   background-color: #060307;
-
+  gap: 24px;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
@@ -48,7 +48,6 @@
   object-position: center top;
   border-radius: 16px;
   object-fit: cover;
-  margin-bottom: 24px;
 }
 
 .artist-card-content {
@@ -100,7 +99,7 @@
 
 .artist-card-link {
   border-radius: 12px;
-
+  padding: 0;
   border: none;
   background-color: transparent;
   display: flex;
@@ -190,7 +189,6 @@
   }
   .artist-card {
     width: 704px;
-    height: 659px;
     min-width: 450px;
   }
   .artist-card-image {
@@ -220,7 +218,6 @@
     justify-content: unset;
     align-items: unset;
     gap: 32px;
-    width: 100%;
     margin: 0;
   }
   .artist-card {
