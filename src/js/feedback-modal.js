@@ -61,6 +61,7 @@ function closeModal() {
   setTimeout(() => {
     modalOverlay.classList.remove('is-open', 'is-close');
   }, 300);
+
   document.removeEventListener('keydown', closeModalOnClickEscape);
 }
 
