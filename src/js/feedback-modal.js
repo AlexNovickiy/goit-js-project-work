@@ -47,7 +47,11 @@ function openModal() {
 feedbackBtn.addEventListener('click', openModal);
 
 function closeModal() {
-    modalOverlay.classList.remove('is-open');
+    modalOverlay.classList.add('is-close');
+  
+    setTimeout(() => {
+      modalOverlay.classList.remove('is-open', 'is-close');
+    }, 300);
   }
 
 closeBtn.addEventListener('click', closeModal);

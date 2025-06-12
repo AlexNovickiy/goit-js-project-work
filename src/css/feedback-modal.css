@@ -20,19 +20,18 @@ body.no-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
-    visibility: hidden;
+    transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+               opacity 300ms ease;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;     
 }
 
 .modal-overlay.is-open {
-    transform: translateX(0);
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
     background-color: rgba(20, 20, 20, 0.4);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 .feedback-mod {
@@ -43,7 +42,7 @@ body.no-scroll {
     
 .modal-overlay.is-open .feedback-mod {
     transform: scale(1);
-    opacity: 1;     
+    opacity: 1;    
 }
 
 .feedback-mod {
@@ -69,6 +68,17 @@ body.no-scroll {
     color: white;
     font-size: 24px;
     cursor: pointer;
+    transform: scale(0.95);
+}
+
+.modal-overlay.is-close {
+    opacity: 0;
+    background-color: transparent;
+}
+
+.modal-overlay.is-close .feedback-mod {
+    transform: scale(0.95);
+    opacity: 0;     
 }
 
 .close-btn-mod:hover {
