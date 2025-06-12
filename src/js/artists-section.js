@@ -159,9 +159,13 @@ resetFiltersBtn.addEventListener('click', () => {
 });
 
 // --- Load More ---
-loadMoreBtn.addEventListener('click', () => {
+loadMoreBtn.addEventListener('click', async () => {
   currentPage++;
-  fetchAndRenderArtists();
+  await fetchAndRenderArtists();
+  window.scrollTo({
+    top: artistsGrid.offsetTop + artistsGrid.offsetHeight,
+    behavior: 'smooth',
+  });
 });
 
 // --- Main fetch/render ---
@@ -190,7 +194,8 @@ async function fetchAndRenderArtists(clear = false) {
     return;
   }
   renderArtistCards(artists, artistsGrid);
-  if (artists.length === perPage) {
+  const isLastPage = data.page * perPage >= data.totalArtists;
+  if (!isLastPage) {
     loadMoreBtn.style.display = 'flex';
   } else {
     loadMoreBtn.style.display = 'none';
