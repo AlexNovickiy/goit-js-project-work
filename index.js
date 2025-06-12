@@ -17,7 +17,7 @@ import{a as k,i as g,S as ve}from"./assets/vendor-Cq1ZEsD1.js";(function(){const
         </div>
       </li>`}function Ie(e,t){const n=e.map(s=>{var l;const r=s.strArtistThumb||"https://via.placeholder.com/350x350?text=No+Image",a=s.genres||[],i=((l=s.genres)==null?void 0:l.map(h=>`<li class="genre-tag">${h}</li>`).join(""))||"",y=s.strBiographyEN||"Короткий опис для цього артиста відсутній.";return`
         <li class="artist-card">
-          <img src="${r}" alt="${s.strArtist}" class="artist-card-image" />
+          <img src="${r}" loading="lazy" alt="${s.strArtist}" class="artist-card-image" />
           <div class="artist-card-content">
             <ul class="artist-card-genres">${i}</ul>
             <h3 class="artist-card-name">${s.strArtist}</h3>
