@@ -1,6 +1,7 @@
 .no-scroll {
+    position: fixed;
+    width: 100%;
     overflow: hidden;
-    height: 100vh;
 }
 
 .modal-overlay-artists {
@@ -136,15 +137,30 @@
     line-height: 150%;
 }
 
-.detail-value,
 .modal-info-bio {
     display: -webkit-box;
     line-height: 150%;
     -webkit-line-clamp: 10;
     line-clamp: 10;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow-y: scroll;
     text-overflow: ellipsis;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #2a2a2a;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #414141;
+        border-radius: 2px;
+        border: 1px solid #2a2a2a;
+    }
 }
 
 .genres {
