@@ -64,7 +64,10 @@
   font-size: 18px;
   line-height: 1.5;
   text-align: center;
-  margin-bottom: 16px;
+}
+
+.swiper-wrapper {
+  margin-bottom: 12px;
 }
 
 .swiper-button-prev::after,
@@ -127,7 +130,7 @@
   display: flex;
   justify-content: center;
   gap: 9px;
-  margin: 0 auto 16px;
+  margin: 0 auto 12px;
   padding: 10px 0;
   position: static !important;
 }
@@ -168,9 +171,15 @@
 }
 
 @media screen and (min-width: 768px) {
+  .swiper-wrapper {
+    margin-bottom: 16px;
+  }
   .feedback-section .swiper-button-prev,
   .feedback-section .swiper-button-next {
     display: flex;
+  }
+  .swiper-pagination {
+    margin: 0 auto 16px;
   }
   .feedback-text {
     font-size: 26px;
@@ -186,21 +195,20 @@
     padding: 112px 0px;
   }
   .swiper-wrapper {
-    padding-top: 112px;
+    margin-bottom: 75px;
+  }
+  .swiper-pagination {
+    margin: 0 auto 80px;
   }
   .feedback-section .swiper-button-prev,
   .feedback-section .swiper-button-next {
-    top: 55%;
-    transform: translateY(-55%);
+    top: 25%;
+    transform: translateY(-25%);
   }
   .swiper-pagination {
     margin: 0 auto 80px;
   }
   .feedback-btn {
     width: 177px;
-  }
-
-  .feedback-author {
-    margin-bottom: 75px;
   }
 }
