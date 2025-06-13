@@ -136,7 +136,7 @@ filtersPanelForm.addEventListener('submit', e => {
   currentPage = 1;
   fetchAndRenderArtists(true);
 });
-resetBtn.addEventListener('click', () => {
+resetBtn.addEventListener('click', e => {
   selectedGenre = '';
   selectedSort = '';
   searchValue = '';
@@ -147,7 +147,7 @@ resetBtn.addEventListener('click', () => {
   fetchAndRenderArtists(true);
 });
 
-resetFiltersBtn.addEventListener('click', () => {
+resetFiltersBtn.addEventListener('click', e => {
   selectedGenre = '';
   selectedSort = '';
   searchValue = '';
