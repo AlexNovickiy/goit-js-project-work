@@ -173,7 +173,9 @@ async function fetchAndRenderArtists(clear = false) {
   loadMoreBtn.style.display = 'none';
   emptyState.classList.add('hidden');
   spinner.classList.remove('hidden');
-  if (clear) artistsGrid.innerHTML = '';
+  if (clear) {
+    document.getElementById('artists-card-id').innerHTML = '';
+  }
   const params = {
     page: currentPage,
     name: searchValue,
