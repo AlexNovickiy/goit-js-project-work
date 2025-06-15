@@ -99,6 +99,7 @@
   width: 24px;
   height: 24px;
 }
+
 .swiper-button-prev.disabled,
 .swiper-button-next.disabled {
   opacity: 0.3;
@@ -115,6 +116,7 @@
 .swiper-button-next:is(:hover, :focus) svg {
   fill: #764191;
 }
+
 .feedback-section .swiper-button-prev {
   left: 0;
 }
@@ -122,6 +124,7 @@
 .feedback-section .swiper-button-next {
   right: 0;
 }
+
 .swiper-button-prev svg {
   transition: fill 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -142,6 +145,7 @@
   opacity: 1 !important;
   cursor: pointer;
 }
+
 .swiper-pagination-bullet.active {
   background: #fff !important;
 }
