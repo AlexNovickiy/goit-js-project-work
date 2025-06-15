@@ -55,8 +55,14 @@ async function initFeedbackSwiper() {
   function updateBullets() {
     const idx = swiper.realIndex;
     document.querySelectorAll('.swiper-pagination-bullet').forEach(el => {
-      el.classList.toggle('active', +el.dataset.i === idx);
+      const i = +el.dataset.i;
+      const isActive =
+        (i === first && idx === first) ||
+        (i === last && idx === last) ||
+        (i === middle && idx !== first && idx !== last);
+      el.classList.toggle('active', isActive);
     });
+
     updateArrows(idx, first, last);
   }
 
